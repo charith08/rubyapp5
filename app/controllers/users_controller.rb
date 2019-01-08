@@ -5,13 +5,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+  @users = User.where(activated: FILL_IN).paginate(page: params[:page])
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless FILL_IN
   end
 
   # GET /users/new
@@ -28,9 +29,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        @user.send_activation_email
+        format.html { redirect_to login_url, notice: 'Please check your email to activate your account.' }
+      #flash[:info] = "Please check your email to activate your account."
+
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

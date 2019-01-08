@@ -59,6 +59,24 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { :api_token => "7639c6d3-c761-4c9f-ba23-f10682c63104" }
+  host = 'http://localhost:3000/'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.postmarkapp.com',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => :plain,
+    :password       => :plain,
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+
+
+
+
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "rubyapp5_#{Rails.env}"

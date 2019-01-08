@@ -9,4 +9,6 @@ User.create!(name:  "Charith",
              email: "charithsaivadla@gmail.com",
              password:              "foobar",
              password_confirmation: "foobar",
-             admin: true)
+             admin: true
+             activated: true,
+               activated_at: Time.zone.now)
