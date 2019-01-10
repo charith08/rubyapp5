@@ -1,23 +1,31 @@
 <% provide(:title, "Log in") %>
-<%= stylesheet_link_tag "/stylesheets/custom.css" %>
+<%= stylesheet_link_tag "/custom.css" %>
 <h1>Log in</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <%= form_for(:session, url: login_path) do |form| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <div class="field">
+        <%= form.label :email, class: "inputfield" %>
+        <%= form.text_field :email, class: 'form-control inputfield' %>
+      </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+       <div class="field">
+         <%= form.label :password, class: "inputfield" %>
+         <%= form.text_field :password, class: 'form-control inputfield' %>
+      </div>
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
+      <div class="field">
+        <%= form.label :remember_me, class: "checkbox inline inputfield" do %>
+        <%= form.check_box :remember_me %>
         <span>Remember me on this computer</span>
-      <% end %>
+        <% end %>
+      </div>
 
-      <%= f.submit "Log in", class: "button" %>
+
+
+      <%= form.submit "Log in", class: "button" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
