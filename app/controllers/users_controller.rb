@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-  @users = User.where(activated: true).paginate(page: params[:page])
+  @users = User.where(activated: true)
   end
 
   # GET /users/1
