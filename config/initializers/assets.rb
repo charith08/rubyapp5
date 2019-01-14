@@ -4,7 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 
 config.assets.initialize_on_precompile = false
-config.assets.precompile += %w( custom.css )
+config.assets.precompile += %w( /custom.css )
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
 # Add Yarn node_modules folder to the asset load path.
