@@ -62,7 +62,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :postmark
   config.action_mailer.postmark_settings = { :api_token => "7639c6d3-c761-4c9f-ba23-f10682c63104" }
-  host = 'http://localhost:3000/'
+  host = 'https://protected-dusk-47983.herokuapp.com/'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.postmarkapp.com',
