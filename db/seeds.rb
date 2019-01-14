@@ -11,4 +11,4 @@ User.create!(name:  "Charith",
              password_confirmation: "foobar",
              admin: true,
              activated: true,
-               activated_at: Time.zone.now)
+             activated_at: Time.zone.now)

@@ -33,7 +33,6 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
-    update_columns(activated: FILL_IN, activated_at: FILL_IN)
   end
 
 
