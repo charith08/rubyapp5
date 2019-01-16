@@ -26,19 +26,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
       if @user.save
          UserMailer.account_activation(@user).deliver_now
-        format.html { redirect_to root_url, notice: 'Please check your email to activate your account.' }
-      #flash[:info] = "Please check your email to activate your account."
-
+         flash[:info] = "Please check your email to activate your account."
+         redirect_to root_url
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render 'new'
       end
     end
-  end
+
 
   def edit
     @user = User.find(params[:id])
