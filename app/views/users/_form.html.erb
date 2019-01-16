@@ -25,12 +25,12 @@
 
   <div class="field">
     <%= form.label :password, class: "inputfield"  %>
-    <%= form.text_field :password, class: "inputfield"  %>
+    <%= form.password_field :password, class: "inputfield"  %>
   </div>
 
   <div class="field">
     <%= form.label :password_confirmation, "Confirmation", class: "inputfield"  %>
-    <%= form.text_field :password_confirmation, class: "inputfield"  %>
+    <%= form.password_field :password_confirmation, class: "inputfield"  %>
   </div>
 
 <%= form.submit yield(:button_text), class: "button" %>
