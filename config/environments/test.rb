@@ -42,8 +42,8 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
 
-  host = 'http://localhost:3000/'
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = { host: 'commutatus.com' }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

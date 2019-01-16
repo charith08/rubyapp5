@@ -29,8 +29,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        @user.send_activation_email
-        format.html { redirect_to login_url, notice: 'Please check your email to activate your account.' }
+         UserMailer.account_activation(@user).deliver_now
+        format.html { redirect_to root_url, notice: 'Please check your email to activate your account.' }
       #flash[:info] = "Please check your email to activate your account."
 
       else

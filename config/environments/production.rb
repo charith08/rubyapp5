@@ -22,7 +22,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  
+
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
@@ -60,21 +60,6 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { :api_token => "b76f5692-4a8d-4575-b28a-549a8e3f1a3c" }
-  host = 'https://protected-dusk-47983.herokuapp.com/'
-  config.action_mailer.default_url_options = { host: host }
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.postmarkapp.com',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => :plain,
-    :password       => :plain,
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
-  }
-
 
 
 
@@ -110,4 +95,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'protected-dusk-47983.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.postmarkapp.com',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'b76f5692-4a8d-4575-b28a-549a8e3f1a3c',
+    :password       => 'b76f5692-4a8d-4575-b28a-549a8e3f1a3c',
+    :domain         => 'heroku.com'
+  }
+
+
+
 end

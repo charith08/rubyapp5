@@ -11,13 +11,13 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 
-  def User.digest(string)
+  def digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  def new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -37,14 +37,14 @@ class User < ApplicationRecord
   end
 
 
-    def activate
-    update_columns(activated: true, activated_at: true)
-    end
+    #def activated
+    #update_columns(activated: , activated_at: Time.now)
+    #end
 
     # Sends activation email.
-    def send_activation_email
-      UserMailer.account_activation(self).deliver_now
-    end
+    #def send_activation_email
+    #  UserMailer.account_activation(self).deliver_now
+    #end
 
   private
 

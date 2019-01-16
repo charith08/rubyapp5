@@ -13,9 +13,8 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   config.action_mailer.raise_delivery_errors = true
- config.action_mailer.delivery_method = :postmark
- host = 'protected-dusk-47983.herokuapp.com/'
- config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+ #config.action_mailer.delivery_method = :test
+
 
 
 
@@ -72,4 +71,9 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+  
 end
